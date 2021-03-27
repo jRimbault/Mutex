@@ -13,7 +13,7 @@ namespace Sync
     {
         private readonly object _monitor = new object();
         private readonly int _timeout = Timeout.Infinite;
-        private readonly T _inner;
+        internal readonly T _inner;
 
         public SyncLock(T value) : this(value, Timeout.Infinite)
         {
@@ -47,40 +47,18 @@ namespace Sync
         /// A lock guard with exclusive access to <c>T</c> which then should be disposed of to release the lock
         /// </returns>
         /// <exception cref="LockTimeoutException">The operation times out.</exception>
-        public ILockGuard<T> Lock()
+        public LockGuard<T> Lock()
         {
-            if (!System.Threading.Monitor.TryEnter(_monitor, _timeout))
+            if (!Monitor.TryEnter(_monitor, _timeout))
             {
                 throw new LockTimeoutException($"Failed to acquire lock for {nameof(T)}");
             }
             return new LockGuard<T>(this);
         }
 
-        private void Unlock()
+        internal void Unlock()
         {
             Monitor.Exit(_monitor);
-        }
-
-        private sealed class LockGuard<U> : ILockGuard<U> where U : notnull
-        {
-            public U Value { get => _parent._inner; }
-            private bool _isDisposed = false;
-            private readonly SyncLock<U> _parent;
-
-            public LockGuard(SyncLock<U> parent) => _parent = parent;
-
-            /// <summary>
-            /// Releases the lock. Subsequent calls to this method do nothing.
-            /// </summary>
-            public void Dispose()
-            {
-                if (_isDisposed)
-                {
-                    return;
-                }
-                _parent.Unlock();
-                _isDisposed = true;
-            }
         }
     }
 }
