@@ -48,7 +48,7 @@ ___
 
 Single file version [here][gist].
 
-[gist]: https://gist.github.com/jRimbault/d2640e9d8ff3b998d66fbc4a57cf7e0b#file-locker-cs
+[gist]: https://gist.github.com/jRimbault/d2640e9d8ff3b998d66fbc4a57cf7e0b
 
 ___
 

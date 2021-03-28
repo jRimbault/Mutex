@@ -6,7 +6,8 @@ namespace Sync
     /// A guard which provides exclusive access to the inner <c>T</c>,
     /// that guard must be disposed of to release the internal monitor (i.e. to unlock).
     /// </summary>
-    public sealed class MutexGuard<U> : IDisposable where U : notnull
+    public sealed class MutexGuard<U> : IDisposable
+        where U : notnull
     {
         public U Value { get => _parent._inner; }
         private bool _isDisposed = false;
