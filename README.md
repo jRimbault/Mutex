@@ -46,6 +46,12 @@ This way I know, at compile time, that `IFoo` and `IQaz` are never accessed with
 
 ___
 
+Single file version [here][gist].
+
+[gist]: https://gist.github.com/jRimbault/d2640e9d8ff3b998d66fbc4a57cf7e0b#file-locker-cs
+
+___
+
 Inspiration taken from the Rust [`Mutex`][RustMutex] type. Later discovered Jon Skeet had done a similar [`SyncLock`][SyncLock] which is more about timing out than managing concurrent access to a ressource.
 
 
