@@ -16,7 +16,7 @@ class Fooer
         {
             lock (_fooLock)
             {
-                _foo.Value.Bar(_qaz.Quz());
+                _foo.Bar(_qaz.Quz());
             }
         }
     }
@@ -43,3 +43,11 @@ class Fooer
 ```
 
 This way I know, at compile time, that `IFoo` and `IQaz` are never accessed without proper locking and unlocking and visual noise is reduced.
+
+___
+
+Inspiration taken from the Rust [`Mutex`][RustMutex] type. Later discovered Jon Skeet had done a similar [`SyncLock`][SyncLock] which is more about timing out than managing concurrent access to a ressource.
+
+
+[RustMutex]: https://doc.rust-lang.org/stable/std/sync/struct.Mutex.html
+[SyncLock]: https://jonskeet.uk/csharp/miscutil/usage/locking.html
