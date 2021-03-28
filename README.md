@@ -23,13 +23,13 @@ class Fooer
 }
 ```
 
-This `SyncLock` class allows coupling the lock object and what it "protects" together :
+This `Mutex` class allows coupling the lock object and what it "protects" together :
 
 ```cs
 class Fooer
 {
-    private readonly SyncLock<IQaz> _qaz;
-    private readonly SyncLock<IFoo> _foo;
+    private readonly Mutex<IQaz> _qaz;
+    private readonly Mutex<IFoo> _foo;
     
     public void DoThing()
     {
