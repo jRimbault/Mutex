@@ -15,10 +15,7 @@ namespace Sync
         private readonly object _monitor = new object();
         internal readonly T _inner;
 
-        public Mutex(T value)
-        {
-            _inner = value;
-        }
+        public Mutex(T value) => _inner = value;
 
         /// <summary>
         /// Locks the monitor.
@@ -27,10 +24,7 @@ namespace Sync
         /// A lock guard with exclusive access to <c>T</c> which then should be disposed of to release the lock.
         /// </returns>
         /// <exception cref="MutexException">The operation times out.</exception>
-        public MutexGuard<T> Lock()
-        {
-            return Lock(Timeout.Infinite);
-        }
+        public MutexGuard<T> Lock() => Lock(Timeout.Infinite);
 
         /// <summary>
         /// Locks the monitor.
