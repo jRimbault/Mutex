@@ -3,7 +3,7 @@ using System;
 namespace Sync
 {
     /// <summary>
-    /// Exception thrown when a Lock method on the SyncLock class times out.
+    /// Exception thrown when a Lock method on the Mutex class times out.
     /// </summary>
     public class MutexException : Exception
     {
