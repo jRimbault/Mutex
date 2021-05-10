@@ -3,21 +3,16 @@
 I've often found myself with a class like :
 
 ```cs
-class Fooer
+class Zhuli
 {
-    private readonly object _qazLock = new object();
-    private readonly IQaz _qaz;
     private readonly object _fooLock = new object();
     private readonly IFoo _foo;
     
-    public void DoThing()
+    public void DoTheThing()
     {
-        lock (_qazLock)
+        lock (_fooLock)
         {
-            lock (_fooLock)
-            {
-                _foo.Bar(_qaz.Quz());
-            }
+            _foo.Bar();
         }
     }
 }
@@ -26,17 +21,15 @@ class Fooer
 This `Mutex` class allows coupling the lock object and what it "protects" together :
 
 ```cs
-class Fooer
+class Zhuli
 {
-    private readonly Mutex<IQaz> _qaz;
     private readonly Mutex<IFoo> _foo;
     
-    public void DoThing()
+    public void DoTheThing()
     {
-        using (var qaz = _qaz.Lock())
         using (var foo = _foo.Lock())
         {
-            foo.Value.Bar(qaz.Value.Quz());
+            foo.Value.Bar();
         }
     }
 }
