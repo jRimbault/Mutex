@@ -35,7 +35,7 @@ class Zhuli
 }
 ```
 
-This way I know, at compile time, that `IFoo` is never[<sup>1</sup>](#note-1) accessed without proper locking and unlocking.
+This way I know, at compile time, that `IFoo` is never[<sup>1</sup>](#note-1) accessed without proper locking and unlocking. The locking isn't simply upheld by convention and developer discipline, it's upheld and checked by the compiler.
 
 ___
 
