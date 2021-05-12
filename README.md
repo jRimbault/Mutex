@@ -35,7 +35,7 @@ class Zhuli
 }
 ```
 
-This way I know, at compile time, that `IFoo` and `IQaz` are never[<sup>1</sup>](#note-1) accessed without proper locking and unlocking and visual noise is reduced.
+This way I know, at compile time, that `IFoo` is never[<sup>1</sup>](#note-1) accessed without proper locking and unlocking.
 
 ___
 
