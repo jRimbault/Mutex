@@ -27,10 +27,8 @@ class Zhuli
     
     public void DoTheThing()
     {
-        using (var foo = _foo.Lock())
-        {
-            foo.Value.Bar();
-        }
+        using var foo = _foo.Lock();
+        foo.Value.Bar();
     }
 }
 ```
